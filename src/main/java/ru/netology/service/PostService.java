@@ -22,7 +22,7 @@ public class PostService {
     }
 
     public Post save(Post post) {
-        return repository.save(post);
+        return repository.save(post).orElseThrow(() -> new NotFoundException("Not found post with ID " + post.getId()));
     }
 
     public void removeById(long id) {
